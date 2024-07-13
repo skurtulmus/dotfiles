@@ -1,0 +1,23 @@
+#! /bin/sh
+
+LOCDEF="$HOME/medya/resim/ekran"
+FILEDEF="ss_$(date +%H%M%S).png"
+LOCIN=$(echo "-->" | dmenu -p "ImageMagick Import: Klasör")
+FILEIN=$(echo "-->" | dmenu -p "ImageMagick Import: Dosya")
+
+if [ "$LOCIN" = "-->" ]; then
+   LOCATION="$LOCDEF"
+elif [ "$LOCIN" = "~" ]; then
+   LOCATION="$HOME"
+else
+   LOCATION="$HOME/$LOCIN"
+fi
+
+if [ "$FILEIN" = "-->" ]; then
+   FILE="$FILEDEF"
+else
+   FILE="$FILEIN.png"
+fi
+
+sleep .5
+import $LOCATION/$FILE

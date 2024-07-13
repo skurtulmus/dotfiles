@@ -1,0 +1,4 @@
+#! /bin/bash
+
+DOC=$1
+pdftohtml -stdout "$DOC" | w3m -T text/html

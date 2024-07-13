@@ -1,0 +1,10 @@
+#!/bin/sh
+
+convert $1 \
+	\( -clone 0 -set option:distort:viewport "%hx%h+0+0" \
+	-filter point -distort SRT 0 +repage \
+	-clone 0 -gravity east -compose over -composite \
+	-blur 0x5 \
+	-clone 0 -gravity center -compose over -composite \) \
+-delete 0 \
+$2

@@ -1,0 +1,11 @@
+.R1
+database /home/xinnna/belge/.apa.rr
+sort A+
+accumulate
+move-punctuation
+label "(@|Q) ', ' '\*[MIDINFO]' D '\*[ENDINFO]'"
+short-label "'\*[MIDINFO]' D '\*[ENDINFO]'"
+bracket-label " (" ")" ", "
+join-authors " & " ", " " & "
+no-label-in-reference
+.R2

@@ -1,0 +1,45 @@
+! Basic configuration for Xterm
+
+Xterm.buffered: true
+Xterm.cursorBlink: true
+Xterm.cursorUnderline: true
+Xterm.scrollbar: false
+!Xterm.font: xft:Cousine NF:size=12
+Xterm.faceName: xft:Cousine NF:size=12
+
+! special
+Xterm.foreground:   Gray90
+Xterm.background:  #111111
+Xterm.cursorColor:  Gray90
+
+! black
+Xterm.color0:       Black
+Xterm.color8:       Gray50
+
+! red
+Xterm.color1:       Red3
+Xterm.color9:       Red
+
+! green
+Xterm.color2:       SeaGreen3
+Xterm.color10:      SeaGreen1
+
+! yellow
+Xterm.color3:       Gold1
+Xterm.color11:      LightGoldenrod1
+
+! blue
+Xterm.color4:       DodgerBlue1
+Xterm.color12:      CornflowerBlue
+
+! magenta
+Xterm.color5:       DeepPink1
+Xterm.color13:      Orchid2
+
+! cyan
+Xterm.color6:       DarkTurquoise
+Xterm.color14:      MediumTurquoise
+
+! white
+Xterm.color7:       Gray90
+Xterm.color15:      White

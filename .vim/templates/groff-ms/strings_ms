@@ -1,0 +1,19 @@
+.ds REFERENCES Kaynakça
+.ds ABSTRACT ÖZET
+.ds TOC İçindekiler
+.ds LH \m[h-apa]---
+.ds RH \m[h-apa]-%-
+.ds CH
+.ds MONTH1 Ocak
+.ds MONTH2 Şubat
+.ds MONTH3 Mart
+.ds MONTH4 Nisan
+.ds MONTH5 Mayıs
+.ds MONTH6 Haziran
+.ds MONTH7 Temmuz
+.ds MONTH8 Ağustos
+.ds MONTH9 Eylül
+.ds MONTH10 Ekim
+.ds MONTH11 Kasım
+.ds MONTH12 Aralık
+.ds RPAGE 0

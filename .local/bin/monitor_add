@@ -1,0 +1,12 @@
+#! /bin/sh
+
+xrandr
+echo -n "\nOutput: "
+read XRROUT
+echo -n "Mode: "
+read XRRMOD
+xrandr --output $XRROUT --mode $XRRMOD --right-of eDP1
+pkill polybar
+while pgrep -x polybar >/dev/null; do sleep 1; done
+polybar gradient &
+polybar hdmi &

@@ -1,0 +1,15 @@
+#! /bin/bash
+
+#if [ $TOGGLE == "on" ]; then
+#   polybar-msg cmd hide && bspc node -t fullscreen
+#elif [ $TOGGLE == "off" ]; then
+#   polybar-msg cmd show && bspc node -t tiled
+#else
+#   echo "Invalid argument."
+#fi
+
+if [ -n "$(xdotool search --onlyvisible --class polybar)" ]; then
+   polybar-msg cmd hide && bspc node -t fullscreen && echo "Focus mode on."
+else
+   polybar-msg cmd show && bspc node -t tiled && echo "Focus mode off."
+fi

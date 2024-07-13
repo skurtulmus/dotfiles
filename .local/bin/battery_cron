@@ -1,0 +1,14 @@
+#! /bin/sh
+export DISPLAY=:0
+
+CAP=$(cat /sys/class/power_supply/BAT0/capacity)
+
+if [ $CAP -le 15 ] && [ $CAP -gt 10 ]; then
+	aplay $HOME/.config/dzen/notification.wav &
+	echo "Battery - Low ($CAP%)" | dzen2 \
+	-p 8 -tw 300 -x 810 -y 50 -h 40 -fn 'Courier Prime:size=11'
+elif [ $CAP -le 10 ]; then
+	aplay $HOME/.config/dzen/notification.wav &
+	echo "Battery - Critical ($CAP%)" | /usr/bin/dzen2 \
+	-p -tw 300 -x 810 -y 50 -h 40 -fn 'Courier Prime:size=11' -bg '#882222'
+fi

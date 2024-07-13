@@ -1,0 +1,55 @@
+#! /bin/sh
+
+INPUT=`echo "Firefox\nTelegram\nMumble\nMPV\nZathura\nGIMP\nInkscape\n\
+Brave\nRawTherapee\nCinelerra GG\nWesnoth\nVirtualBox\nDiscord\nMS Teams"\
+| dmenu -b -i -p "Programs"`
+
+case $INPUT in
+	"Firefox")
+		COMMAND="firefox"
+		;;
+	"Telegram")
+		COMMAND="./.local/share/telegram/Telegram"
+		;;
+	"Mumble")
+		COMMAND="mumble"
+		;;
+	"MPV")
+		COMMAND="mpv --player-operation-mode=pseudo-gui --"
+		;;
+	"Zathura")
+		COMMAND="zathura"
+		;;
+	"GIMP")
+		COMMAND="gimp"
+		;;
+	"Inkscape")
+		COMMAND="inkscape"
+		;;
+	"Brave")
+		COMMAND="./.local/share/brave/brave"
+		;;
+	"RawTherapee")
+		COMMAND="rawtherapee"
+		;;
+	"Cinelerra GG")
+		COMMAND="$HOME/.local/share/cinelerra/cin"
+		;;
+	"Wesnoth")
+		COMMAND="wesnoth"
+		;;
+	"VirtualBox")
+		COMMAND="VirtualBox"
+		;;
+	"Discord")
+		COMMAND="$HOME/.local/share/Discord/Discord"
+		;;
+	"MS Teams")
+		COMMAND="teams"
+		;;
+	*)
+		COMMAND="$INPUT"
+		;;
+esac
+
+($COMMAND &)

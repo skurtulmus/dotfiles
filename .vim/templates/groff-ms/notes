@@ -1,0 +1,12 @@
+\" .P1          -> Header on page 1
+\" .af % i      -> Roman
+\" .af % 1      -> Normal
+\" .ft TR       -> Font
+\" .nr          -> Number
+\" .nr PO       -> Page offset
+\" .nr PO       -> Line length
+\" .so          -> Source
+\" .R1 - .R2    -> Refer
+\" .ds          -> Strings
+\" .pn          -> Page number
+\" .AB - .AE    -> Abstract

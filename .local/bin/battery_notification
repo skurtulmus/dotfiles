@@ -1,0 +1,6 @@
+#! /bin/sh
+
+OUTPUT=$(acpi -b)
+
+aplay $HOME/.config/dzen/notification.wav &
+echo "$OUTPUT" | dzen2 -p 5 -tw 500 -x 710 -y 60 -h 40 -fn 'Courier Prime:size=11'

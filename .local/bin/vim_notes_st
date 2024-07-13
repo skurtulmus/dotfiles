@@ -1,0 +1,18 @@
+#! /bin/sh
+
+mkdir -p $HOME/.local/share/note
+
+TODAYFILE=$HOME/.local/share/note/$(date "+%d_%b_%y").md
+
+if [ ! -f $TODAYFILE ]
+then
+   echo "# $(date "+%a, %b %d - %H:%M")" > $TODAYFILE
+fi
+
+bspc rule -a "Vimnotes-st" state=floating -o
+st -c Vimnotes-st -e vim $TODAYFILE \
+   -c "norm Go" \
+   -c "norm Go+ $(date "+%H:%M")" \
+   -c "norm 2o" \
+   -c "vnew | e $HOME/.local/share/note/vn.md" \
+   -c "norm Go"

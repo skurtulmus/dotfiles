@@ -1,0 +1,57 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use experimental "switch";
+
+my @extra_args = ();
+
+print "Delete removed files? (y/n): ";
+my $DELETE = <STDIN>;
+chomp $DELETE;
+
+given ($DELETE) {
+	when ("y") {
+		push @extra_args, "--delete";
+	}
+	when ("n") {
+	}
+	default {
+		print "Invalid response.\n";
+		exit;
+	}
+}
+
+print "Use Openrsync? (y/n): ";
+my $OPENRSYNC = <STDIN>;
+chomp $OPENRSYNC;
+
+given ($OPENRSYNC) {
+	when ("y") {
+		push @extra_args, "--rsync-path=openrsync";
+	}
+	when ("n") {
+	}
+	default {
+		print "Invalid response.";
+		exit;
+	}
+}
+
+print "Local directory to sync: ";
+my $LOCAL_DIR = <STDIN>;
+chomp $LOCAL_DIR;
+
+my $local = $LOCAL_DIR . "/";
+
+print "Remote host: ";
+my $REMOTE_HOST = <STDIN>;
+chomp $REMOTE_HOST;
+
+print "Remote directory: ";
+my $REMOTE_DIR = <STDIN>;
+chomp $REMOTE_DIR;
+
+my $remote = $REMOTE_HOST . ":" . $REMOTE_DIR;
+
+system("rsync -avh @extra_args $local $remote");

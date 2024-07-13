@@ -1,0 +1,8 @@
+#! /bin/sh
+export DISPLAY=:0
+
+INFO=$(iwconfig wlp0s20f3 | sed -n 's/.*\(SSID.*\)$/\1/p')
+
+	aplay $HOME/.config/dzen/elegant.wav &
+	echo "$INFO" | /usr/bin/dzen2 \
+	-p 8 -tw 300 -x 810 -y 50 -h 40 -fn 'Courier Prime:size=11'

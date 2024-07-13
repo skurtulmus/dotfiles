@@ -1,0 +1,16 @@
+#! /bin/sh
+
+echo -n "Time: "
+read TIMER
+echo -n "Notification: "
+read NOTIF
+
+FILE="$HOME/.cache/alarm/$(date +%j%H%M%S).alarm"
+
+cat << EOF > "$FILE"
+export DISPLAY=:0
+aplay ~/.config/dzen/notification.wav &
+echo "$NOTIF" | dzen2 -p -tw 300 -x 810 -y 50 -h 40 -fn 'Hack NF:size=10'
+EOF
+
+[ -f "$FILE" ] && chmod +x "$FILE" && at -f $FILE $TIMER

@@ -1,0 +1,56 @@
+.so /home/limaara/.config/groff-custom/underline.tmac
+.PAPER A4
+.L_MARGIN 2.5c
+.R_MARGIN 2.5c
+.T_MARGIN 2.5c
+.B_MARGIN 2.5c
+
+.PRINTSTYLE TYPESET
+.DOCTYPE DEFAULT
+.COPYSTYLE FINAL \#DRAFT
+
+.FAMILY CM
+.FT R
+.PT_SIZE 12
+.LS 15
+.DOC_LEAD_ADJUST OFF
+.HY LINES 2
+.SS 0
+.KERN
+.JUSTIFY
+.PARA_SPACE
+.INDENT_FIRST_PARAS
+.HEADERS OFF
+.FOOTERS OFF
+
+.TOC_HEADER_STRING ""
+.BIBLIOGRAPHY_STRING ""
+.BIBLIOGRAPHY_STRING_CAPS
+
+.TITLE ""
+.SUBTITLE ""
+.AUTHOR ""
+.ATTRIBUTE_STRING ""
+
+.R1
+database /home/limaara/doc/.bibl.groff
+sort
+accumulate
+move-punctuation
+label "(A.n|Q) ', ' D.y ', p. \*[PINT]'"
+bracket-label " (" ")" ", "
+join-authors ", & " ", " ", & "
+no-label-in-reference
+.R2
+
+.START
+
+.EPIGRAPH BLOCK
+
+.EPIGRAPH OFF
+
+.BIBLIOGRAPHY
+.[
+$LIST$
+.]
+.BIBLIOGRAPHY OFF

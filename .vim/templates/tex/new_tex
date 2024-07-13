@@ -1,0 +1,19 @@
+\documentclass{}
+\usepackage[a4paper, left=4cm, right=2.5cm, top=2.5cm, bottom=2cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{apacite}
+\author{Sinan Kurtulmuş}
+\title{}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+
+\subsection{}
+
+\bibliographystyle{apacite}
+\bibliography{}
+
+\end{document}

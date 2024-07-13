@@ -1,0 +1,220 @@
+################
+### TERMINAL ###
+################
+
+# terminal emulator
+super + Return
+	st
+
+# scratchpad visibility toggle
+super + BackSpace
+	$HOME/.local/bin/scratchpad_st
+
+# open notepad
+super + n
+   $HOME/.local/bin/vim_notes_st
+
+#############
+### DMENU ###
+#############
+
+# program launcher / run dialog
+super + space
+	$HOME/.local/bin/dmenu_programs
+
+# session actions
+super + e
+	$HOME/.local/bin/dmenu_exit
+
+############
+### LOCK ###
+############
+
+# screen locker
+super + x
+   xlock -mode rain -bg black -fg gray
+
+##################
+### SCREENSHOT ###
+##################
+
+# screenshot (select area)
+super + p
+	$HOME/.local/bin/import_screenshot
+
+# screenshot (root window)
+super + Print
+	import -window root $HOME/ss_$(date +%H%M%S).png
+
+########################
+### BRIGHTNESS/SOUND ###
+########################
+
+# brightness up
+XF86MonBrightnessUp
+	brillo -u 40000 -A 5
+
+# brightness down
+XF86MonBrightnessDown
+	brillo -u 40000 -U 5
+
+# volume up
+XF86AudioRaiseVolume
+	pamixer -i 5
+
+# volume down
+XF86AudioLowerVolume
+	pamixer -d 5
+
+# mute
+XF86AudioMute
+	pamixer -t
+
+# mute mic
+XF86AudioMicMute
+	pamixer --source 1 -t
+
+#############
+### SXHKD ###
+#############
+
+# sxhkd reload
+super + Escape
+	pkill -USR1 -x sxhkd
+
+#####################
+### OTHER SCRIPTS ###
+#####################
+
+# focus mode toggle
+super + o
+   $HOME/.local/bin/focus
+
+
+
+#################
+###################
+##### BSPWM #########
+###################
+#################
+
+
+
+##############
+### ACTION ###
+##############
+
+# close/kill
+super + q
+	bspc node -c
+
+################
+### MOVEMENT ###
+################
+
+# focus the given window
+super + {h,j,k,l}
+	bspc node -f {west,south,north,east}
+
+# focus the last node/desktop
+super + {_,shift + } Tab
+	bspc {node,desktop} -f last
+
+# focus a floating node
+super + z
+	bspc node -f next.local.floating.\!hidden
+
+# focus the given desktop
+super + {1-9,0}
+	bspc desktop -f '^{1-9,10}'
+
+# focus the next monitor
+super + m
+	bspc monitor -f next
+
+###################
+### NODE LAYOUT ###
+###################
+
+# send to the given desktop
+super + shift + {1-9,0}
+	bspc node -d '^{1-9,10}'
+
+# send to the next monitor
+super + shift + m
+	bspc node -m next
+
+# change basic window layout
+super + {f,g,y,u}
+	bspc node -t {fullscreen,tiled,pseudo_tiled,floating}
+
+# rotate windows in desktop
+super + {_,shift + } r
+	bspc node @/ -R {90,270}
+
+# swap two windows
+super + shift + {h,j,k,l}
+	bspc node -s {west,south,north,east}
+
+# insert node into the preselected area
+super + a
+	bspc node -n newest.!automatic.local
+
+# swap with the biggest local window
+super + s
+	bspc node -s biggest.local
+
+# keep the tiling position
+super + d
+	bspc node -g private
+
+# stick to the window
+super + t
+	bspc node -g sticky
+
+# mark the window
+super + v
+	bspc node -g marked
+
+# insert receptacle
+super + i
+	bspc node -i
+
+# move a floating window
+super + shift + {Left,Down,Up,Right}
+	bspc node -v {-10 0,0 10,0 -10,10 0}
+
+####################
+### PRESELECTION ###
+####################
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+################
+### RESIZING ###
+################
+
+# expand a window by moving one side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+########################################################
+############# TODO: Multiple selection, layout scripts
+
+# focus the node for the given path jump (?)
+#super + {p,b,comma,period}
+#	bspc node -f @{parent,brother,first,second}

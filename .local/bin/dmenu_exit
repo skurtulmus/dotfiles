@@ -1,0 +1,15 @@
+#! /bin/sh
+
+ACTION=`echo "Lock\nQuit\nReboot\nPoweroff" | dmenu -p "Exit" -i`
+
+if [ "$ACTION" = "Lock" ]; then
+	slock
+elif [ "$ACTION" = "Quit" ]; then
+	bspc quit
+elif [ "$ACTION" = "Reboot" ]; then
+	doas reboot
+elif [ "$ACTION" = "Poweroff" ]; then
+	doas poweroff
+else
+	exit
+fi

@@ -1,0 +1,4 @@
+#! /bin/bash
+
+scid=$(xdotool search --class Scratchpad-st)
+[ "$scid" != "" ] && bspc node "$scid" --flag hidden -f

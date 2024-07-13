@@ -1,0 +1,127 @@
+"           ____
+"           \__/
+"     ___  _ __  _____  _____  ____
+"     \  \/ /  |/     \/  __ \/  __\
+"  /\  \   /|  |  Y Y  \  | \/\  \___
+"  \/   \_/ |__|__|_|__/__|    \____/
+
+filetype indent plugin on
+syntax enable
+colorscheme puerh
+highlight endspace ctermbg=124
+match endspace /\s\+$/
+
+autocmd InsertEnter * highlight endspace ctermbg=NONE
+autocmd InsertLeave * highlight endspace ctermbg=124
+
+let g:focused = v:false
+
+function! Focus()
+    execute "silent !focus"
+    Goyo
+    if g:focused == v:false
+        highlight endspace ctermbg=NONE
+    else
+        highlight endspace ctermbg=124
+    endif
+    let g:focused = !g:focused
+endfunction
+
+autocmd BufNewFile  *.c   0read $HOME/.vim/templates/c/new_c
+autocmd BufNewFile  *.pl  0read $HOME/.vim/templates/perl/new_pl
+autocmd BufNewFile  *.tex 0read $HOME/.vim/templates/tex/new_tex
+autocmd BufNewFile  *.ms  0read $HOME/.vim/templates/groff-ms/new_ms
+autocmd BufNewFile  *.mom 0read $HOME/.vim/templates/groff-mom/new_mom
+
+autocmd BufRead,BufNewFile  *.mom set filetype=groff-mom | runtime! ftplugin/groff-mom.vim
+autocmd BufRead,BufNewFile  *.ms  set filetype=groff-ms | runtime! ftplugin/groff-ms.vim
+autocmd BufRead,BufNewFile  *.rr  set filetype=refer-db | runtime! ftplugin/refer-db.vim
+
+"set backspace=indent,eol,start "OpenBSD
+"set notermguicolors "neovim
+"set shortmess=tTC
+"set guicursor=n-v-c:hor20,i-ci-ve:ver25,r-cr:block,o:hor50 "neovim
+"set shadafile=$HOME/.config/nvim/shada "neovim
+"set backupdir=$HOME/.config/nvim/backup "neovim
+"set directory=$HOME/.config/nvim/swap "neovim
+set viminfofile=$HOME/.vim/viminfo "vim
+set backupdir=$HOME/.vim/backup "vim
+set omnifunc=syntaxcomplete#Complete
+set list listchars=tab:\ \ ▶
+set spelllang=tr,en,fr
+set encoding=utf-8
+set clipboard+=unnamedplus
+set history=500
+set foldmethod=manual
+set path+=**
+set mouse-=a
+set background=dark
+set backup
+set noerrorbells
+set foldenable
+set splitright
+set splitbelow
+set number
+set hlsearch
+set incsearch
+set showmatch
+set wildmenu
+set ignorecase
+set smartcase
+set autoindent
+set lazyredraw
+
+set statusline=
+set statusline+=%#slnormal#%{(mode()=='n')?'\ \ <NORMAL>\ ':''}
+set statusline+=%#slinsert#%{(mode()=='i')?'\ \ <INSERT>\ ':''}
+set statusline+=%#slvisual#%{(mode()=='v')?'\ \ <VISUAL>\ ':''}
+set statusline+=%#slreplace#%{(mode()=='r')?'\ \ <REPLACE>\ ':''}
+set statusline+=%#slfilename#\ %F
+set statusline+=%=
+set statusline+=%#slformat#\ %y\ %{(&fenc!=''?&fenc:&enc)}\/%{&fileformat}
+set statusline+=%#slnumber#\ %l/%L::%c\ %p%%
+set laststatus=2
+
+let &t_SI = "\<Esc>[6 q" "vim
+let &t_EI = "\<Esc>[4 q" "vim
+let &t_SR = "\<Esc>[2 q" "vim
+let mapleader = " "
+let g:tex_flavor = 'latex'
+let g:netrw_banner=0
+let g:netrw_winsize=20
+let g:netrw_liststyle=3
+let g:netrw_list_hide= '\(^\|\s\s\)\zs\.\S\+'
+
+noremap K $
+noremap <Leader>k g_
+
+nnoremap <silent> <Leader>f :call Focus()<CR>
+nnoremap <Leader>j :new<CR>
+nnoremap <Leader>l :vnew<CR>
+nnoremap <Leader>t :tabnew<CR>
+nnoremap <Leader>c :nohlsearch<CR>
+nnoremap <Leader>s :set spell!<CR>
+nnoremap <Leader>d :set digraph!<CR>
+nnoremap <Leader><CR> o<CR><Esc>
+nnoremap <CR> o<Esc>
+
+inoremap { {}<Left>
+inoremap ( ()<Left>
+inoremap [ []<Left>
+inoremap "" ""<Left>
+inoremap '' ''<Left>
+inoremap __ __<Left>
+inoremap <> <><Left>
+inoremap <C-l> <Right>
+
+cnoremap RC e $HOME/.vim/vimrc
+cnoremap TG TagbarToggle
+cnoremap FE Lexplore!
+cnoremap FF fin<Space>
+cnoremap SB %s//g<Left><Left>
+cnoremap OC %s///gn<Left><Left><Left><Left>
+cnoremap WC !sed "s/^\.\S.*//g" %:p \| wc -w
+cnoremap WP !pdftotext %:r.pdf - \| wc -w
+cnoremap W<CR> w<CR>
+cnoremap Q<CR> q<CR>
+cnoremap K<CR> qa!<CR>

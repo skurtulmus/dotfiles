@@ -1,0 +1,10 @@
+#! /bin/sh
+export DISPLAY=:0
+
+NUMBER=$(xbps-install -SunM | wc -l)
+
+if [ "$NUMBER" != 0 ]; then
+	aplay $HOME/.config/dzen/notification.wav &
+	echo "Void: $NUMBER update(s) are available." | dzen2 \
+		-p 8 -tw 300 -x 810 -y 50 -h 40 -fn 'Hack NF:size=10'
+fi

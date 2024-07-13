@@ -1,0 +1,19 @@
+\version "$LILYPOND_VERSION"
+\language "english"
+
+\header {
+	title = ""
+	composer = "Sinan Kurtulmuş"
+}
+
+\paper {
+	#(set-paper-size "A4")
+}
+
+global = {
+	\key c \major
+	\numericTimeSignature
+	\time 4/4
+	\tempo 4 = 105
+	\clef = "bass"
+}

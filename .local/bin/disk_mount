@@ -1,0 +1,25 @@
+#! /bin/sh
+
+lsblk
+echo -n "Device: "
+read DEV
+
+#sysctl hw.disknames
+#echo "Disk: "
+#read DISK
+#doas disklabel -h $DISK
+#echo "Partition: "
+#read PART
+#DEV="$DISK$PART"
+
+[ -n "$(df | grep $DEV)" ] && echo "Device already mounted!" && exit 1
+
+MOUNTDEV=/dev/$DEV
+MOUNTPNT=/mnt/$DEV
+
+[ -d "$MOUNTPNT" ] || doas mkdir $MOUNTPNT && doas chown $USER:$USER $MOUNTPNT
+[ -n "$(ls -A $MOUNTPNT)" ] && echo "The directory is not empty!" && exit 1
+
+doas mount -o noexec,nodev,nosuid,uid=$(id -u),gid=$(id -g),dmask=0022,fmask=0133 $MOUNTDEV $MOUNTPNT && echo "Device mounted."
+
+# doas mount -o noexec,nodev,nosuid $MOUNTDEV $MOUNTPNT && echo "Device mounted."

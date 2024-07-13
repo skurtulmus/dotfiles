@@ -1,0 +1,6 @@
+.nr PO 2.5c
+.nr LL 16c
+
+.ds FAM CM
+.nr PS 12p
+.nr VS 14p

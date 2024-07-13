@@ -1,0 +1,3 @@
+.so /home/limaara/.config/groff-custom/macros-add.tmac
+.so /home/limaara/.config/groff-custom/refer/refer.tmac
+.so /home/limaara/.config/groff-custom/refer/apa-ms.tmac
