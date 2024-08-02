@@ -1,3 +1,4 @@
+cnoremap <buffer> MP write \| !pdfmom -Tps -Kutf8 % > %:r.ps
 cnoremap <buffer> MM write \| !pdfmom -Tpdf -Kutf8 % > %:r.pdf
 cnoremap <buffer> MR write \| !preconv % \| refer \| groff -Tpdf -Kutf8 -mom % > %:r.pdf
 
