@@ -17,10 +17,12 @@ export STARDICT_DATA_DIR=~/.local/share/sdcv
 #export LESS="-Dd+9\$Du+11\$Ds+2\$Dk4\$ --incsearch"
 export LESSHISTFILE="-"
 export XDG_RUNTIME_DIR=/run/user/1000
+export KUBECONFIG="$HOME/.kube/config"
 . "$HOME/.cargo/env"
 
 set -o noclobber
 set -o vi
+# set +o history # bash
 
 alias doas='doas '
 alias xup='xbps-install -Su'
@@ -33,6 +35,7 @@ alias xsr='xbps-query -Rs'
 alias xli='xbps-query -l'
 alias xmn='xbps-query -m'
 alias rad='pyradio'
+alias k='kubectl'
 alias rs='runescape-launcher'
 alias nb='newsboat'
 alias ox='startx'
@@ -40,6 +43,7 @@ alias cl='clear'
 alias rm='rm -i'
 alias ls='ls --color=always --group-directories-first -F -h'
 alias lk='physlock -p Void'
+alias vir='vim -R'
 alias grep='grep --color=auto'
 alias wsc='doas iw dev wlp0s20f3 scan | grep SSID'
 alias rew='doas sv restart wpa_supplicant'
@@ -60,6 +64,24 @@ alias .2='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
+
+con () {
+	if [ "$1" = "get" ]; then
+		kubectl config get-contexts
+	elif [ "$1" = "" ]; then
+		kubectl config get-contexts
+	else
+		kubectl config use-context "$1"
+	fi
+}
+
+s () {
+	pass -c "$1" && ssh "$1"
+}
+
+_SSH=$(perl -ne 'print "$1\n" if /^Host\s+(\S+)/' $HOME/.ssh/config)
+set -A complete_ssh -- $_SSH
+set -A complete_s -- $_SSH
 
 xs () {
 	xpkg -a |
