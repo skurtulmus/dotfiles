@@ -9,7 +9,7 @@ Xterm.faceName: xft:Cousine NF:size=12
 
 ! special
 Xterm.foreground:   Gray90
-Xterm.background:  #111111
+Xterm.background:   Black
 Xterm.cursorColor:  Gray90
 
 ! black
