@@ -4,8 +4,8 @@ export PS1='[\[\e[33m\]\u\[\e[34m\]@\[\e[36m\]\h\[\e[m\]: \[\e[1;30m\]\w\[\e[m\]
 
 [[ $- != *i* ]] && return
 
-export PATH=$PATH:~/.local/bin:~/.local/share/solana/install/archive_release/bin:~/.gems/bin
-export PERL5LIB=$PERL5LIB:~/.local/share/perl5/lib/perl5
+export PATH=$PATH:~/.local/bin:~/.local/share/perl5/bin
+export PERL5LIB=$PERL5LIB:~/.local/share/perl5
 export PERL_LOCAL_LIB_ROOT=$PERL_LOCAL_LIB_ROOT:~/.local/share/perl5/
 export PERL_MB_OPT="--install_base \"~/.local/share/perl5\""
 export PERL_MM_OPT="INSTALL_BASE \"~/.local/share/perl5\""
