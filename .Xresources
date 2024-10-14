@@ -4,7 +4,6 @@ Xterm.buffered: true
 Xterm.cursorBlink: true
 Xterm.cursorUnderline: true
 Xterm.scrollbar: false
-!Xterm.font: xft:Cousine NF:size=12
 Xterm.faceName: xft:Cousine NF:size=12
 
 ! special
@@ -14,7 +13,7 @@ Xterm.cursorColor:  Gray90
 
 ! black
 Xterm.color0:       Black
-Xterm.color8:       Gray50
+Xterm.color8:       Gray60
 
 ! red
 Xterm.color1:       Red3
