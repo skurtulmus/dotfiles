@@ -1,6 +1,15 @@
 # shell rc
 
-export PS1='[\[\e[33m\]\u\[\e[34m\]@\[\e[36m\]\h\[\e[m\]: \[\e[1;30m\]\w\[\e[m\]]\$ '
+git_prompt () {
+	GIT_PROMPT_BRANCH=$(git branch --show-current 2>/dev/null)
+	if [ "$GIT_PROMPT_BRANCH" = "" ]; then
+		echo ""
+	else
+		echo " ($GIT_PROMPT_BRANCH)"
+	fi
+}
+
+PROMPT_COMMAND='PS1="[\[\e[33m\]\u\[\e[34m\]@\[\e[36m\]\h\[\e[m\]: \[\e[1;30m\]\w\[\e[35m\]$(git_prompt) \[\e[m\]]\$ "'
 
 [[ $- != *i* ]] && return
 
@@ -79,9 +88,9 @@ s () {
 	pass -c "$1" && ssh "$1"
 }
 
-_SSH=$(perl -ne 'print "$1\n" if /^Host\s+(\S+)/' $HOME/.ssh/config)
-set -A complete_ssh -- $_SSH
-set -A complete_s -- $_SSH
+#_SSH=$(perl -ne 'print "$1\n" if /^Host\s+(\S+)/' $HOME/.ssh/config) #oksh
+#set -A complete_ssh -- $_SSH #oksh
+#set -A complete_s -- $_SSH #oksh
 
 xs () {
 	xpkg -a |

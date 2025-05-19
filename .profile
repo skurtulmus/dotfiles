@@ -1,1 +1,1 @@
-export ENV=$HOME/.kshrc
+export ENV=$HOME/.bashrc

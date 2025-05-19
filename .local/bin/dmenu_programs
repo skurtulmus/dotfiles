@@ -1,7 +1,7 @@
 #! /bin/sh
 
 INPUT=`echo "Firefox\nTelegram\nBlueman\nMumble\nMPV\nZathura\nGIMP\nInkscape\n\
-Brave\nRawTherapee\nCinelerra GG\nDiscord"\
+Brave\nRawTherapee\nCinelerra GG\nDiscord\nFreeciv\nSteam"\
 | dmenu -b -i -p "Programs"`
 
 case $INPUT in
@@ -16,6 +16,9 @@ case $INPUT in
 		;;
 	"Mumble")
 		COMMAND="mumble"
+		;;
+	"Godot")
+		COMMAND="godot"
 		;;
 	"MPV")
 		COMMAND="mpv --player-operation-mode=pseudo-gui --"
@@ -40,6 +43,12 @@ case $INPUT in
 		;;
 	"Discord")
 		COMMAND="$HOME/.local/share/Discord/Discord"
+		;;
+	"Freeciv")
+		COMMAND="freeciv-gtk3.22"
+		;;
+	"Steam")
+		COMMAND="dbus-run-session flatpak run com.valvesoftware.Steam"
 		;;
 	*)
 		COMMAND="$INPUT"
