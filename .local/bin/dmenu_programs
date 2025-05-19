@@ -1,6 +1,6 @@
 #! /bin/sh
 
-INPUT=`echo "Firefox\nTelegram\nBlueman\nMumble\nMPV\nZathura\nGIMP\nInkscape\n\
+INPUT=`echo "Firefox\nTelegram\nBlueman\nMumble\nGodot\nMPV\nZathura\nGIMP\nInkscape\n\
 Brave\nRawTherapee\nCinelerra GG\nDiscord\nFreeciv\nSteam"\
 | dmenu -b -i -p "Programs"`
 
